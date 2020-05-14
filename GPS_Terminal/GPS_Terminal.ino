@@ -22,9 +22,17 @@ void loop()
 {
   
     spr.fillSprite(TFT_BLACK);
-    spr.setCursor(0,5,2);
-    spr.println("The GPS raw data"); 
-    spr.setCursor(0,20,2);
+    spr.fillSprite(TFT_BLACK);
+    spr.setFreeFont(&FreeSansBoldOblique18pt7b); 
+    spr.setTextColor(TFT_GREEN);
+    spr.drawString("GPS RAW DATA", 20, 10 , 1);// Print the test text in the cust
+    for(int8_t line_index = 0;line_index < 5 ; line_index++)
+    {
+    spr.drawLine(0, 50 + line_index, tft.width(), 50 + line_index, TFT_GREEN);
+    }
+    spr.setTextColor(TFT_WHITE);
+    spr.setTextFont(2); 
+    spr.setCursor(0,60);
     while(ss.available())                     // if date is coming from software serial port ==> data is coming from ss shield
     {              
         uint8_t reciver = ss.read();
